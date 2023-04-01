@@ -4,7 +4,7 @@ RusticLogger is a simple logging app built with Rust. It allows users to log mes
 
 ## Features
 
-- Log messages with different severity levels (debug, info, warn, error)
+- **[On next release]** Log messages with different severity levels (debug, info, warn, error)
 - Store log messages in a file
 - Simple and easy to use
 
@@ -12,34 +12,57 @@ RusticLogger is a simple logging app built with Rust. It allows users to log mes
 
 ### Installation
 
-To use RusticLogger, you need to have Rust installed on your machine. You can install Rust by following the instructions on the official Rust website: https://www.rust-lang.org/tools/install
-
-Once you have Rust installed, you can clone this repository and build the app by running the following commands:
+Add the following line to your Cargo.toml file:
 
 ```
-git clone https://github.com/your-username/rustic-logger.git
-cd rustic-logger
-cargo build --release
+[dependencies]
+rustic-logger = "0.1.1"
 ```
 
 ### Usage
 
-To use RusticLogger, simply run the following command:
+Basic usage
 
 ```
-cargo run --release -- log_file_path message severity_level
+use rustic_logger::log;
+
+fn main() {
+    let filename = "app-log.log";
+    log(filename, "An error occurred", None).unwrap();
+
+}
+
+// [2023-04-01 16:38:40,258] An error occurred
 ```
 
-Replace `log_file_path` with the path where you want to store your log file, message with the message you want to log, and severity_level with the severity level of the message (debug, info, warn, or error).
-
-For example:
+Custom timestamp format by passing `time_format`
 
 ```
-cargo run --release -- /path/to/log.txt "This is a debug message"
+use rustic_logger::log;
+
+fn main() {
+    let filename = "mylog.txt";
+    let time_format = Some("%a, %b %d %Y %I:%M:%S %p");
+    log(filename, "Successfully insert new user", time_format).unwrap();
+
+}
+
+// [Sat, Apr 01 2023 04:38:40 PM] Successfully insert new user
 ```
 
-debug
-This will log the message "This is a debug message" with severity level "debug" and store it in the file located at `/path/to/log.txt`.
+### API
+
+- > **log(filename: &'static str, entry: &'static str, time_format: Option<&'static str>) -> io::Result<String>**
+
+  This function logs the given entry message to the specified filename with an optional custom time_format timestamp format. The function returns the formatted timestamp as a String.
+
+- > **formatted_time_entry(time_format: Option<&'static str>) -> String**
+
+  This function returns a formatted timestamp as a String with an optional custom time_format.
+
+- > **record_entry_in_log(filename: &str, bytes: &[u8]) -> io::Result<()>**
+
+  This function appends the given bytes to the specified filename.
 
 ## Contributing
 
