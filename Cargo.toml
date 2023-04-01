@@ -2,6 +2,9 @@
 name = "rustic-logger"
 version = "0.1.0"
 edition = "2021"
+description = "RusticLogger: because life is too short to debug without logs!"
+license = "MIT"
+license-file = "LICENSE"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
