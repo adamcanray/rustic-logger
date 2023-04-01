@@ -2,9 +2,14 @@
 name = "rustic-logger"
 version = "0.1.0"
 edition = "2021"
+authors = ["Adam Canray"]
 description = "RusticLogger: because life is too short to debug without logs!"
 license = "MIT"
 license-file = "LICENSE"
+documentation = "https://github.com/adamcanray/rustic-logger"
+repository = "https://github.com/adamcanray/rustic-logger"
+homepage = "https://github.com/adamcanray/rustic-logger"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
