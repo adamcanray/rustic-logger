@@ -1,5 +1,5 @@
 [package]
-name = "simple-log"
+name = "rustic-logger"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 chrono = "0.4.24"
-nickel = "*"
+nickel = "0.11.0"
